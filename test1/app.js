@@ -3,11 +3,32 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mysql = require('mysql');
+var db = require('./config/db'); //db모듈 호출
+var cors = require('cors');//교차통신 모듈 호출
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+var conn = db.init();
+db.conn(conn);
+
+// const dbinfo ={
+//   host:'localhost'
+//   ,user:'root'
+//   ,password:'1234'
+//   ,database:'exer_vue'
+// }
+
+// mysql.createConnection(dbinfo).connect((err)=>{ //db 커넥션 연결 확인
+//   if(err) {
+//     console.log("mysql connect error "+err);
+//   } else {
+//     console.log("mysql connect success ");
+//   }
+// })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
