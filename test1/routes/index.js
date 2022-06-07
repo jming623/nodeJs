@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 router.use("/api",api);
 
 router.all('/',(req,res) => {
-  res.send("{message:welcome}")
+  res.send("{message:welcome Node.js}")
 })
 
 module.exports = router;
